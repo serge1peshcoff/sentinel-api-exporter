@@ -1,0 +1,96 @@
+# HELP sentinel_api_block_height Block height
+# TYPE sentinel_api_block_height gauge
+sentinel_api_block_height <%= generalStats.block_height %>
+
+# HELP sentinel_api_block_time Block time
+# TYPE sentinel_api_block_time gauge
+sentinel_api_block_time <%= generalStats.block_time %>
+
+# HELP sentinel_api_total_txs_num Total txs num
+# TYPE sentinel_api_total_txs_num gauge
+sentinel_api_total_txs_num <%= generalStats.total_txs_num %>
+
+# HELP sentinel_api_total_validator_num Total validator num
+# TYPE sentinel_api_total_validator_num gauge
+sentinel_api_total_validator_num <%= generalStats.total_validator_num %>
+
+# HELP sentinel_api_unjailed_validator_num Unjailed validator num
+# TYPE sentinel_api_unjailed_validator_num gauge
+sentinel_api_unjailed_validator_num <%= generalStats.unjailed_validator_num %>
+
+# HELP sentinel_api_jailed_validator_num Jailed validator num
+# TYPE sentinel_api_jailed_validator_num gauge
+sentinel_api_jailed_validator_num <%= generalStats.jailed_validator_num %>
+
+# HELP sentinel_api_total_supply_tokens Total supply tokens
+# TYPE sentinel_api_total_supply_tokens gauge
+<% for (const token of generalStats.total_supply_tokens) { %>sentinel_api_total_supply_tokens{mac="<%= token.denom %>"} <%= token.amount %><% } %>
+
+# HELP sentinel_api_total_circulating_tokens Total circulating tokens
+# TYPE sentinel_api_total_circulating_tokens gauge
+<% for (const token of generalStats.total_circulating_tokens) { %>sentinel_api_total_circulating_tokens{mac="<%= token.denom %>"} <%= token.amount %><% } %>
+
+# HELP sentinel_api_bonded_tokens Bonded tokens
+# TYPE sentinel_api_bonded_tokens gauge
+sentinel_api_bonded_tokens <%= generalStats.bonded_tokens %>
+
+# HELP sentinel_api_not_bonded_tokens Not bonded tokens
+# TYPE sentinel_api_not_bonded_tokens gauge
+sentinel_api_not_bonded_tokens <%= generalStats.not_bonded_tokens %>
+
+# HELP sentinel_api_inflation Inflation
+# TYPE sentinel_api_inflation gauge
+sentinel_api_inflation <%= generalStats.inflation %>
+
+
+# HELP sentinel_api_rank Rank
+# TYPE sentinel_api_rank gauge
+sentinel_api_rank{address="<%= address %>"} <%= validatorStats.rank %>
+
+# HELP sentinel_api_bonded_height Bonded height
+# TYPE sentinel_api_bonded_height gauge
+sentinel_api_bonded_height{address="<%= address %>"} <%= validatorStats.bonded_height %>
+
+# HELP sentinel_api_jailed Jailed?
+# TYPE sentinel_api_jailed gauge
+sentinel_api_jailed{address="<%= address %>"} <%= validatorStats.jailed ? 1 : 0 %>
+
+# HELP sentinel_api_status Status
+# TYPE sentinel_api_status gauge
+sentinel_api_status{address="<%= address %>"} <%= validatorStats.status %>
+
+# HELP sentinel_api_tokens Tokens
+# TYPE sentinel_api_tokens gauge
+sentinel_api_tokens{address="<%= address %>"} <%= validatorStats.tokens %>
+
+# HELP sentinel_api_delegator_shares Delegator shares
+# TYPE sentinel_api_delegator_shares gauge
+sentinel_api_delegator_shares{address="<%= address %>"} <%= validatorStats.delegator_shares %>
+
+# HELP sentinel_api_unbonding_height Unbonding height
+# TYPE sentinel_api_unbonding_height gauge
+sentinel_api_unbonding_height{address="<%= address %>"} <%= validatorStats.unbonding_height %>
+
+# HELP sentinel_api_rate Rate
+# TYPE sentinel_api_rate gauge
+sentinel_api_rate{address="<%= address %>"} <%= validatorStats.rate %>
+
+# HELP sentinel_api_max_rate Max rate
+# TYPE sentinel_api_max_rate gauge
+sentinel_api_max_rate{address="<%= address %>"} <%= validatorStats.max_rate %>
+
+# HELP sentinel_api_max_change_rate Max change rate
+# TYPE sentinel_api_max_change_rate gauge
+sentinel_api_max_change_rate{address="<%= address %>"} <%= validatorStats.max_change_rate %>
+
+# HELP sentinel_api_missed_blocks Missed blocks
+# TYPE sentinel_api_missed_blocks gauge
+sentinel_api_missed_blocks{address="<%= address %>"} <%= validatorStats.uptime.missed_blocks %>
+
+# HELP sentinel_api_over_blocks Over blocks
+# TYPE sentinel_api_over_blocks gauge
+sentinel_api_over_blocks{address="<%= address %>"} <%= validatorStats.uptime.over_blocks %>
+
+# HELP sentinel_api_min_self_delegation Min self delegation
+# TYPE sentinel_api_min_self_delegation gauge
+sentinel_api_min_self_delegation{address="<%= address %>"} <%= validatorStats.min_self_delegation %>
