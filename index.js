@@ -23,19 +23,23 @@ server.get('/metrics', async (req, res) => {
         const [
             generalStats,
             validatorStats,
+            marketStats,
         ] = await Promise.all([
             fetch('https://api-sentinel.cosmostation.io/v1/status'),
             fetch(`https://api-sentinel.cosmostation.io/v1/staking/validator/${address}`),
+            fetch('https://api-sentinel.cosmostation.io/v1/stats/market')
         ]);
 
         logger.debug({
             generalStats,
             validatorStats,
+            marketStats
         }, 'Data received');
 
         const data = await ejs.renderFile('./response.ejs', {
             generalStats,
             validatorStats,
+            marketStats,
             address,
         });
         res.set('Content-Type', 'text/plain; version=0.0.4; charset=utf-8');

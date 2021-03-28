@@ -94,3 +94,8 @@ sentinel_api_over_blocks{address="<%= address %>"} <%= validatorStats.uptime.ove
 # HELP sentinel_api_min_self_delegation Min self delegation
 # TYPE sentinel_api_min_self_delegation gauge
 sentinel_api_min_self_delegation{address="<%= address %>"} <%= validatorStats.min_self_delegation %>
+
+
+# HELP sentinel_api_price Token price
+# TYPE sentinel_api_price gauge
+sentinel_api_price{address="<%= address %>"} <%= marketStats.price %>
