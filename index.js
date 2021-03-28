@@ -13,7 +13,7 @@ const fetch = (uri) => request({
 
 const server = express();
 server.use(morgan);
-server.get('/metrics', async (req, res) => {
+server.get('/metrics/validator', async (req, res) => {
     try {
         const address = req.query.address;
         if (!address) {
@@ -39,12 +39,45 @@ server.get('/metrics', async (req, res) => {
             delegationStats,
         }, 'Data received');
 
-        const data = await ejs.renderFile('./response.ejs', {
+        const data = await ejs.renderFile('./responses/validator.ejs', {
             generalStats,
             validatorStats,
             marketStats,
             address,
             delegationStats,
+        });
+        res.set('Content-Type', 'text/plain; version=0.0.4; charset=utf-8');
+        res.end(data);
+    } catch (err) {
+        logger.error(err, 'Getting stats error');
+        res.status(500).end(err.message);
+    }
+});
+
+server.get('/metrics/wallet', async (req, res) => {
+    try {
+        const address = req.query.address;
+        if (!address) {
+            throw new Error('No address provided!');
+        }
+
+        const [
+            walletStats,
+            marketStats,
+        ] = await Promise.all([
+            fetch(`https://api-sentinel.cosmostation.io/v1/account/total/balance/${address}`),
+            fetch('https://api-sentinel.cosmostation.io/v1/stats/market'),
+        ]);
+
+        logger.debug({
+            walletStats,
+            marketStats,
+        }, 'Data received');
+
+        const data = await ejs.renderFile('./responses/wallet.ejs', {
+            walletStats,
+            marketStats,
+            address,
         });
         res.set('Content-Type', 'text/plain; version=0.0.4; charset=utf-8');
         res.end(data);
