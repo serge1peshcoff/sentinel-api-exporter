@@ -17,7 +17,7 @@ docker run -it \
     -d --name=sentinel-api-exporter \
     -p 3032:3032 \
     --label com.centurylinklabs.watchtower.enable=false \
-    --restart unless-stopped \container_memory_usage_bytes{id="/"} / on (instance) machine_memory_bytes
+    --restart unless-stopped \
     sentinel-api-exporter
 ```
 
