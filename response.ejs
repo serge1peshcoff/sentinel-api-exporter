@@ -101,3 +101,18 @@ sentinel_api_min_self_delegation{address="<%= address %>"} <%= validatorStats.mi
 # HELP sentinel_api_price Token price
 # TYPE sentinel_api_price gauge
 sentinel_api_price{address="<%= address %>"} <%= marketStats.price %>
+
+
+# HELP sentinel_api_total_delegator_num Total delegators num
+# TYPE sentinel_api_total_delegator_num gauge
+sentinel_api_prsentinel_api_total_delegator_numice{address="<%= address %>"} <%= delegationStats.total_delegator_num %>
+
+# HELP sentinel_api_delegations_amount Delegations amount by address
+# TYPE sentinel_api_delegations_amount gauge
+<% for (const delegator of delegationStats.delegations) { %>sentinel_api_delegations_amount{from="<%= delegator.delegator_address %>"} <%= delegator.amount %>
+<% } %>
+
+# HELP sentinel_api_delegations_shares Delegations shares by address
+# TYPE sentinel_api_delegations_shares gauge
+<% for (const delegator of delegationStats.delegations) { %>sentinel_api_delegations_shares{from="<%= delegator.delegator_address %>"} <%= delegator.shares %>
+<% } %>
