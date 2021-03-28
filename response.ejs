@@ -24,11 +24,13 @@ sentinel_api_jailed_validator_num <%= generalStats.jailed_validator_num %>
 
 # HELP sentinel_api_total_supply_tokens Total supply tokens
 # TYPE sentinel_api_total_supply_tokens gauge
-<% for (const token of generalStats.total_supply_tokens) { %>sentinel_api_total_supply_tokens{mac="<%= token.denom %>"} <%= token.amount %><% } %>
+<% for (const token of generalStats.total_supply_tokens) { %>sentinel_api_total_supply_tokens{token="<%= token.denom %>"} <%= token.amount %>
+<% } %>
 
 # HELP sentinel_api_total_circulating_tokens Total circulating tokens
 # TYPE sentinel_api_total_circulating_tokens gauge
-<% for (const token of generalStats.total_circulating_tokens) { %>sentinel_api_total_circulating_tokens{mac="<%= token.denom %>"} <%= token.amount %><% } %>
+<% for (const token of generalStats.total_circulating_tokens) { %>sentinel_api_total_circulating_tokens{token="<%= token.denom %>"} <%= token.amount %>
+<% } %>
 
 # HELP sentinel_api_bonded_tokens Bonded tokens
 # TYPE sentinel_api_bonded_tokens gauge
