@@ -1,46 +1,46 @@
 # HELP sentinel_api_wallet_total Wallet total
 # TYPE sentinel_api_wallet_total gauge
-sentinel_api_wallet_total <%= walletStats.total.amount %>
+sentinel_api_wallet_total{address="<%= address %>"} <%= walletStats.total.amount %>
 
 # HELP sentinel_api_wallet_available Wallet available
 # TYPE sentinel_api_wallet_available gauge
-sentinel_api_wallet_available <%= walletStats.available.amount %>
+sentinel_api_wallet_available{address="<%= address %>"} <%= walletStats.available.amount %>
 
 # HELP sentinel_api_wallet_delegated Wallet delegated
 # TYPE sentinel_api_wallet_delegated gauge
-sentinel_api_wallet_delegated <%= walletStats.delegated.amount %>
+sentinel_api_wallet_delegated{address="<%= address %>"} <%= walletStats.delegated.amount %>
 
 # HELP sentinel_api_wallet_undelegated Wallet undelegated
 # TYPE sentinel_api_wallet_undelegated gauge
-sentinel_api_wallet_undelegated <%= walletStats.undelegated.amount %>
+sentinel_api_wallet_undelegated{address="<%= address %>"} <%= walletStats.undelegated.amount %>
 
 # HELP sentinel_api_wallet_rewards Wallet rewards
 # TYPE sentinel_api_wallet_rewards gauge
-sentinel_api_wallet_rewards <%= walletStats.rewards.amount %>
+sentinel_api_wallet_rewards{address="<%= address %>"} <%= walletStats.rewards.amount %>
 
 # HELP sentinel_api_wallet_commission Wallet commission
 # TYPE sentinel_api_wallet_commission gauge
-sentinel_api_wallet_commission <%= walletStats.commission.amount %>
+sentinel_api_wallet_commission{address="<%= address %>"} <%= walletStats.commission.amount %>
 
 # HELP sentinel_api_wallet_vesting Wallet vesting
 # TYPE sentinel_api_wallet_vesting gauge
-sentinel_api_wallet_vesting <%= walletStats.vesting.amount %>
+sentinel_api_wallet_vesting{address="<%= address %>"} <%= walletStats.vesting.amount %>
 
 # HELP sentinel_api_wallet_vested Wallet vested
 # TYPE sentinel_api_wallet_vested gauge
-sentinel_api_wallet_vested <%= walletStats.vested.amount %>
+sentinel_api_wallet_vested{address="<%= address %>"} <%= walletStats.vested.amount %>
 
 # HELP sentinel_api_wallet_failed_vested Wallet failed vested
 # TYPE sentinel_api_wallet_failed_vested gauge
-sentinel_api_wallet_failed_vested <%= walletStats.failed_vested.amount %>
+sentinel_api_wallet_failed_vested{address="<%= address %>"} <%= walletStats.failed_vested.amount %>
 
 # HELP sentinel_api_wallet_incentive Wallet incentive
 # TYPE sentinel_api_wallet_incentive gauge
-sentinel_api_wallet_incentive <%= walletStats.incentive.amount %>
+sentinel_api_wallet_incentive{address="<%= address %>"} <%= walletStats.incentive.amount %>
 
 # HELP sentinel_api_wallet_deposited Wallet deposited
 # TYPE sentinel_api_wallet_deposited gauge
-sentinel_api_wallet_deposited <%= walletStats.deposited.amount %>
+sentinel_api_wallet_deposited{address="<%= address %>"} <%= walletStats.deposited.amount %>
 
 
 # HELP sentinel_api_wallet_price Wallet price
