@@ -16,8 +16,8 @@ docker build -t sentinel-api-exporter .
 docker run -it \
     -d --name=sentinel-api-exporter \
     -p 3032:3032 \
-    --label com.centurylinklabs.watchtower.enable=false \ # so it won't be restarter by Watchtower if it's running
-    --restart unless-stopped \ # so it would start together with the system
+    --label com.centurylinklabs.watchtower.enable=false \
+    --restart unless-stopped \container_memory_usage_bytes{id="/"} / on (instance) machine_memory_bytes
     sentinel-api-exporter
 ```
 
